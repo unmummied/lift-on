@@ -5,10 +5,7 @@ class On t where
     onap :: (t a -> a -> b) -> t (t a -> b)
 
 instance On ((->) r) where
-    -- onpure :: a -> r -> a
     onpure = const
-
-    -- onap :: ((r -> a) -> a -> b) -> r -> (r -> a) -> b
     onap p x f = p f (f x)
 
 on0 ::                      c                      -> (a -> b) -> c
