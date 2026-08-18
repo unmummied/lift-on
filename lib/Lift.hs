@@ -1,12 +1,16 @@
 module Lift where
 
-import Prelude hiding (liftA2, pure, (<*>))
+import Prelude hiding (Applicative, liftA2, pure, (<*>))
 
-pure :: a -> r -> a
-pure = const
+class Functor t => Applicative t where
+    pure :: a -> t a
+    (<*>) :: t (a -> b) -> t a -> t b
 
-(<*>) :: (r -> a -> b) -> (r -> a) -> r -> b
-(<*>) p f x = p x (f x)
+infixl 4 <*>
+
+instance Applicative ((->) r) where
+    pure = const
+    (<*>) p f x = p x (f x)
 
 liftA0 ::  a                      ->  r -> a
 liftA1 :: (a -> b               ) -> (r -> a) ->  r -> b

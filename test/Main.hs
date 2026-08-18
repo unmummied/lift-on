@@ -1,4 +1,4 @@
-module Main where
+module Main (main) where
 
 import Test.QuickCheck
 
@@ -10,11 +10,11 @@ prop_on2 :: Int -> Int               -> Fun Int Int -> Fun (Int, Int)           
 prop_on3 :: Int -> Int -> Int        -> Fun Int Int -> Fun (Int, Int, Int)      Int -> Bool
 prop_on4 :: Int -> Int -> Int -> Int -> Fun Int Int -> Fun (Int, Int, Int, Int) Int -> Bool
 
-prop_on0 n       (Fun _ f)           = on0 n         f == n
-prop_on1 x       (Fun _ f) (Fun _ g) = on1 g x       f == g (f x)
-prop_on2 x y     (Fun _ f) (Fun _ g) = on2 t x y     f == t (f x) (f y)             where t a b     = g (a, b)
-prop_on3 x y z   (Fun _ f) (Fun _ g) = on3 t x y z   f == t (f x) (f y) (f z)       where t a b c   = g (a, b, c)
-prop_on4 x y z w (Fun _ f) (Fun _ g) = on4 t x y z w f == t (f x) (f y) (f z) (f w) where t a b c d = g (a, b, c, d)
+prop_on0 v       (Fun _ f)           = on0 v          f == v
+prop_on1 x       (Fun _ f) (Fun _ u ) = on1 u x       f == u (f x)
+prop_on2 x y     (Fun _ f) (Fun _ b') = on2 b x y     f == b (f x) (f y)             where b a b     = b' (a, b)
+prop_on3 x y z   (Fun _ f) (Fun _ t') = on3 t x y z   f == t (f x) (f y) (f z)       where t a b c   = t' (a, b, c)
+prop_on4 x y z w (Fun _ f) (Fun _ q') = on4 q x y z w f == q (f x) (f y) (f z) (f w) where q a b c d = q' (a, b, c, d)
 
 main :: IO ()
 main = do
