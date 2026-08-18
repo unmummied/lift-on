@@ -1,0 +1,27 @@
+cabal-version: 3.14
+name: lift-on
+version: 0.1.0.0
+build-type: Simple
+
+common warnings
+    ghc-options: -Wall
+
+library
+    import: warnings
+    exposed-modules:
+        Lift,
+        On
+    build-depends: base ^>=4.20.2.0
+    hs-source-dirs: lib
+    default-language: GHC2024
+
+test-suite lift-on-test
+    import: warnings
+    default-language: GHC2024
+    type: exitcode-stdio-1.0
+    hs-source-dirs: test
+    main-is: Main.hs
+    build-depends:
+        base ^>=4.20.2.0,
+        QuickCheck,
+        lift-on
