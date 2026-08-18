@@ -21,4 +21,5 @@ on3 t x y z   = onpure t `onap` x `onap` y `onap` z
 on4 q x y z w = onpure q `onap` x `onap` y `onap` z `onap` w
 
 on :: (b -> b -> c) -> (a -> b) -> a -> a -> c
-on b u x y = on2 b x y u
+-- on b u x y = on2 b x y u
+on = (flip .) (flip .) . on2
