@@ -26,4 +26,5 @@ test-suite lift-on-test
     build-depends:
         base ^>=4.20.2.0,
         QuickCheck,
+        hspec,
         lift-on
