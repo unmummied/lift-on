@@ -17,7 +17,6 @@ liftA1 :: (a -> b               ) -> (r -> a) ->  r -> b
 liftA2 :: (a -> b -> c          ) -> (r -> a) -> (r -> b) ->  r -> c
 liftA3 :: (a -> b -> c -> d     ) -> (r -> a) -> (r -> b) -> (r -> c) ->  r -> d
 liftA4 :: (a -> b -> c -> d -> e) -> (r -> a) -> (r -> b) -> (r -> c) -> (r -> d) -> r -> e
-
 liftA0 v         = pure v
 liftA1 u f       = pure u <*> f
 liftA2 b f g     = pure b <*> f <*> g

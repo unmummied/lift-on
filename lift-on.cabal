@@ -11,6 +11,8 @@ library
     exposed-modules:
         Lift,
         On
+    other-modules:
+        Util
     build-depends: base ^>=4.20.2.0
     hs-source-dirs: lib
     default-language: GHC2024
